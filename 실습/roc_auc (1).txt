@@ -1,0 +1,23 @@
+from sklearn.metrics import roc_curve
+import matplotlib.pyplot as plt
+
+### ROC curve
+### roc curve 패키지로 fpr, tpr 뽑기
+model_fpr, model_tpr, threshold1 = roc_curve(Y_test, Y_predict)
+
+### 랜덤하게 했을때는 fpr, tpr 모두 0.5, 0.5로 나온다. 
+random_fpr, random_tpr, threshold2 = roc_curve(Y_test, [0 for i in range(len(X_test))]) 
+
+plt.figure(figsize = (10,10))
+plt.plot(model_fpr, model_tpr, marker = '.', label = "Logistic")
+plt.plot(random_fpr, random_tpr, linestyle = '--', label = "Random")
+
+plt.xlabel("False Positive Rate", size = 20)
+plt.ylabel("True Positive Rate", size = 20)
+
+plt.legend(fontsize = 20)
+
+plt.title("ROC curve", size = 20)
+plt.show()
+
+

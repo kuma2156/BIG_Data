@@ -1,0 +1,16 @@
+#visualization
+import matplotlib as mpl
+import matplotlib.pylab as plb
+import matplotlib.pyplot as plt
+
+# 브라우저에서 바로 그려지도록 
+%matplotlib inline
+
+# 그래프에 retina display 적용
+%config InlineBackend.figure_format = 'retina'
+
+# Colab 의 한글 폰트 설정
+plt.rc('font', family='NanumBarunGothic') 
+
+# 유니코드에서  음수 부호설정
+mpl.rc('axes', unicode_minus=False)

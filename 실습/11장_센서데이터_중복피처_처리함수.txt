@@ -1,0 +1,9 @@
+def get_new_feature_name_df(old_feature_name_df):         # 중복된 피처명을 feature_1, feature_2 처럼 만들기
+    feature_dup_df = pd.DataFrame(data=old_feature_name_df.groupby('feature_name').cumcount(),
+                                  columns=['dup_cnt'])
+    feature_dup_df = feature_dup_df.reset_index()
+    new_feature_name_df = pd.merge(old_feature_name_df.reset_index(), feature_dup_df, how='outer')
+    new_feature_name_df['feature_name'] = new_feature_name_df[['feature_name', 'dup_cnt']].apply(lambda x : x[0]+'_'+str(x[1]) 
+                                                                                         if x[1] >0 else x[0],  axis=1)
+    new_feature_name_df = new_feature_name_df.drop(['index'], axis=1)
+    return new_feature_name_df

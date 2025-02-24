@@ -1,0 +1,6 @@
+# bash 셸로 명령어 입력하여 한글 자연어 처리 라이브러리 설치하기
+%%bash
+apt-get update
+apt-get install g++ openjdk-8-jdk python-dev python3-dev
+pip3 install JPype1
+pip3 install konlpy
